@@ -25,5 +25,6 @@ jobs:
           cd Build\x64
           cmake ..\.. -G"Visual Studio 15 2017 Win64"
           cmake --build . --config Release
+          ${{ runner.workspace }}\Qt\5.9.1\msvc2017_64\bin\windeployqt.exe .\bin\Release\RpcView.exe
           dir bin\Release
 
