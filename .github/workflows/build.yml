@@ -1,0 +1,28 @@
+name: RpcView Build
+
+on: [push]
+
+jobs:
+  RpcView-x64:
+
+    runs-on: windows-2016
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2.3.0
+        with:
+          version: 5.9.1
+          host: windows
+          target: desktop
+          arch: win64_msvc2017_64
+      - name: Build RpcView-x64
+        env:
+          CMAKE_PREFIX_PATH: ${RUNNER_WORKSPACE}\Qt\Qt5.9.1\5.9.1\win64_msvc2017_64
+        run: |
+          cd RpcView
+          mkdir Build\x64
+          cd Build\x64
+          cmake ..\.. -G"Visual Studio 15 2017" -A Win32
+          cmake --build . --config Release
