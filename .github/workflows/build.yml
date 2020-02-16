@@ -19,7 +19,7 @@ jobs:
           arch: win64_msvc2017_64
       - name: Build RpcView-x64
         env:
-          CMAKE_PREFIX_PATH: ${RUNNER_WORKSPACE}\Qt\Qt5.9.1\5.9.1\win64_msvc2017_64
+          CMAKE_PREFIX_PATH: "%RUNNER_WORKSPACE%\Qt\Qt5.9.1\5.9.1\win64_msvc2017_64"
         run: |
           mkdir Build\x64
           cd Build\x64
