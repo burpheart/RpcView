@@ -21,7 +21,6 @@ jobs:
         env:
           CMAKE_PREFIX_PATH: ${RUNNER_WORKSPACE}\Qt\Qt5.9.1\5.9.1\win64_msvc2017_64
         run: |
-          cd RpcView
           mkdir Build\x64
           cd Build\x64
           cmake ..\.. -G"Visual Studio 15 2017" -A Win32
