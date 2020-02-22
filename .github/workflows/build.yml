@@ -10,8 +10,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Install Python3.7 version
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+          architecture: 'x64'
       - name: Install Qt
-        uses: ouuan/install-qt-action@v2.3.1
+        uses: jurplel/install-qt-action@v2
         with:
           version: 5.9.1
           host: windows
@@ -39,8 +44,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Install Python3.7 version
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+          architecture: 'x64'
       - name: Install Qt
-        uses: ouuan/install-qt-action@v2.3.1
+        uses: jurplel/install-qt-action@v2
         with:
           version: 5.9.1
           host: windows
