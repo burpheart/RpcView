@@ -1,8 +1,12 @@
 ﻿# RpcView
 
+![RpcView Build](https://github.com/HyperSine/RpcView/workflows/RpcView%20Build/badge.svg)
+
 RpcView is an open-source tool to explore and decompile all RPC functionalities present on a Microsoft system.
 
 This repo is a fork from https://github.com/silverf0x/RpcView
+
+You can download builds from [here](https://github.com/HyperSine/RpcView/actions).
 
 ## How to add a new RPC runtime
 
