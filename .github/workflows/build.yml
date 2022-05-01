@@ -4,69 +4,63 @@ on: [push]
 
 jobs:
   RpcView-x86:
-
-    runs-on: windows-2016
-
+    runs-on: windows-2022
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install Python3.7 version
-        uses: actions/setup-python@v1
+      - name: Setup Python
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.7'
+          python-version: '3.10.4'
           architecture: 'x64'
-      - name: Install Qt 5.12.7
+      - name: Install Qt 5.15.2
         uses: jurplel/install-qt-action@v2
         with:
-          version: 5.12.7
+          version: 5.15.2
           host: windows
           target: desktop
-          arch: win32_msvc2017
+          arch: win32_msvc2019
       - name: Build RpcView-x86
-        env:
-          CMAKE_PREFIX_PATH: ${{ runner.workspace }}\Qt\5.12.7\msvc2017
+        shell: pwsh
         run: |
-          mkdir Build\x86
-          cd Build\x86
-          cmake ..\.. -G"Visual Studio 15 2017"
+          mkdir build\x86
+          cd build\x86
+          cmake -A Win32 -G "Visual Studio 17 2022" "-DCMAKE_PREFIX_PATH=${{ runner.workspace }}\Qt\5.15.2\msvc2019".Replace('\', '/') ..\..
           cmake --build . --config Release
-          ${{ runner.workspace }}\Qt\5.12.7\msvc2017\bin\windeployqt.exe .\bin\Release\RpcView.exe
+          ${{ runner.workspace }}\Qt\5.15.2\msvc2019\bin\windeployqt.exe .\bin\Release\RpcView.exe
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
           name: RpcView-x86.zip
-          path: ${{ runner.workspace }}\RpcView\Build\x86\bin\Release
+          path: ${{ runner.workspace }}\RpcView\build\x86\bin\Release
 
   RpcView-x64:
-
-    runs-on: windows-2016
-
+    runs-on: windows-2022
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install Python3.7 version
-        uses: actions/setup-python@v1
+      - name: Setup Python
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.7'
+          python-version: '3.10.4'
           architecture: 'x64'
-      - name: Install Qt 5.12.7
+      - name: Install Qt 5.15.2
         uses: jurplel/install-qt-action@v2
         with:
-          version: 5.12.7
+          version: 5.15.2
           host: windows
           target: desktop
-          arch: win64_msvc2017_64
+          arch: win64_msvc2019_64
       - name: Build RpcView-x64
-        env:
-          CMAKE_PREFIX_PATH: ${{ runner.workspace }}\Qt\5.12.7\msvc2017_64
+        shell: pwsh
         run: |
-          mkdir Build\x64
-          cd Build\x64
-          cmake ..\.. -G"Visual Studio 15 2017 Win64"
+          mkdir build\x64
+          cd build\x64
+          cmake -A x64 -G"Visual Studio 17 2022" "-DCMAKE_PREFIX_PATH=${{ runner.workspace }}\Qt\5.15.2\msvc2019_64".Replace('\', '/') ..\..
           cmake --build . --config Release
-          ${{ runner.workspace }}\Qt\5.12.7\msvc2017_64\bin\windeployqt.exe .\bin\Release\RpcView.exe
+          ${{ runner.workspace }}\Qt\5.15.2\msvc2019_64\bin\windeployqt.exe .\bin\Release\RpcView.exe
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
           name: RpcView-x64.zip
-          path: ${{ runner.workspace }}\RpcView\Build\x64\bin\Release
+          path: ${{ runner.workspace }}\RpcView\build\x64\bin\Release
