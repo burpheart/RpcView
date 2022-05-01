@@ -1,6 +1,5 @@
 name: RpcView Build
-
-on: [push]
+on: workflow_dispatch
 
 jobs:
   RpcView-x86:
