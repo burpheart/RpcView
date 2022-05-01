@@ -26,30 +26,34 @@ Currently, the supported versions are organized as follows:
 
 Required elements to compiled the project:
 
-* Visual Studio (currently Visual Studio 2015 community)
-* CMake (at least 3.0.2)
-* Qt5 (currently 5.9.1)
+* Visual Studio (currently Visual Studio 2019 Community)
+* CMake (currently 3.13.2)
+* Qt5 (currently 5.15.2)
 
 Before running CMake you have to set the CMAKE_PREFIX_PATH environment variable with the Qt **full path**, for instance (x64):
 ```
-set CMAKE_PREFIX_PATH=C:\Qt\Qt5.9.1\5.9.1\msvc2015_64
+set CMAKE_PREFIX_PATH=C:\Qt\5.15.2\msvc2019_64\
 ```
 Before running CMake to produce the project solution you have to create the build directories:
 - ```RpcView/Build/x64``` for 64-bit targets
 - ```RpcView/Build/x86``` for 32-bit targets.
 
-Here is an example to generate the x64 solution with Visual Studio 2015 from the ```RpcView/Build/x64``` directory:
+Here is an example to generate the x64 solution with Visual Studio 2019 from the ```RpcView/Build/x64``` directory:
 
 ```cmake
-cmake -G"Visual Studio 14 2015 Win64" ../../
--- The C compiler identification is MSVC 19.0.24215.1
--- The CXX compiler identification is MSVC 19.0.24215.1
--- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe
--- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe -- works
+cmake ../../ -A x64
+-- Building for: Visual Studio 16 2019
+-- Selecting Windows SDK version 10.0.17763.0 to target Windows 10.0.19041.
+-- The C compiler identification is MSVC 19.28.29334.0
+-- The CXX compiler identification is MSVC 19.28.29334.0
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/cl.exe
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/cl.exe -- works
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
--- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe
--- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe -- works
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/cl.exe
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/cl.exe -- works
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
 -- Detecting CXX compile features
@@ -70,19 +74,23 @@ cmake -G"Visual Studio 14 2015 Win64" ../../
 
 To produce the Win32 solution:
 ```
-set CMAKE_PREFIX_PATH=C:\Qt\Qt5.9.1\5.9.1\msvc2015
+set CMAKE_PREFIX_PATH=C:\Qt\5.15.2\msvc2019
 ```
 Then from the ```RpcView/Build/x86``` directory:
 ```cmake
-cmake -G"Visual Studio 14 2015" ../../
--- The C compiler identification is MSVC 19.0.24215.1
--- The CXX compiler identification is MSVC 19.0.24215.1
--- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/cl.exe
--- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/cl.exe -- works
+cmake ../../ -A win32
+-- Building for: Visual Studio 16 2019
+-- Selecting Windows SDK version 10.0.17763.0 to target Windows 10.0.19041.
+-- The C compiler identification is MSVC 19.28.29334.0
+-- The CXX compiler identification is MSVC 19.28.29334.0
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x86/cl.exe
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x86/cl.exe -- works
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
--- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/cl.exe
--- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/cl.exe -- works
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x86/cl.exe
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x86/cl.exe -- works
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
 -- Detecting CXX compile features
